@@ -1,0 +1,102 @@
+{
+  "title": "Vietnam Economy and Investment: Data, Trends, and Stock Analysis",
+  "summary": "This Knowledge Item provides a comprehensive guide to Vietnam's economic and financial landscape. It includes data sources (GDP, CPI), investment outlooks 2025-2026, and tactical execution patterns featuring 'Macro-Technical Decoupling' and the 'Liquidity Paradox'. It specifically documents the 'Smart Intraday' architecture, featuring session-based aggregation, AI-ready JSON schemas for LLM analysis, and non-linear risk assessment logic for Active and Pending positions.",
+  "references": [
+    {
+      "type": "file",
+      "value": "artifacts/implementation/smart_intraday_architecture.md"
+    },
+    {
+      "type": "conversation_id",
+      "value": "7c0e8258-4a59-4518-9914-a21bced1256f"
+    },
+    {
+      "type": "conversation_id",
+      "value": "000df7d2-7314-4780-a67a-976c7cebd211"
+    },
+    {
+      "type": "conversation_id",
+      "value": "bot-b78bfc2c-ef84-4b10-9133-f2e11116265a"
+    },
+    {
+      "type": "conversation_id",
+      "value": "bot-4b18d010-0c2e-4b42-a5df-aa4359f7a48d"
+    },
+    {
+      "type": "conversation_id",
+      "value": "bot-b25a3722-0a72-4108-83d3-664c788a418e"
+    },
+    {
+      "type": "conversation_id",
+      "value": "bot-a6c3bc53-a550-4c4f-b183-5b6ba117f7b3"
+    },
+    {
+      "type": "conversation_id",
+      "value": "bot-e31b09ca-2671-436e-acfd-28ec3146c510"
+    },
+    {
+      "type": "conversation_id",
+      "value": "bot-d4a03f58-ee15-48c6-9b38-08fd21bb1ce5"
+    },
+    {
+      "type": "conversation_id",
+      "value": "bot-6eedd9e1-9516-4444-a0a9-6e1ef39168de"
+    },
+    {
+      "type": "conversation_id",
+      "value": "bot-c20a8343-8a85-438a-82bd-da70b9d5786e"
+    },
+    {
+      "type": "conversation_id",
+      "value": "bot-58438c74-30a6-416a-9019-3774b0bf1219"
+    },
+    {
+      "type": "conversation_id",
+      "value": "bot-930e558e-cfae-4b3f-b147-86febc989a6c"
+    },
+    {
+      "type": "conversation_id",
+      "value": "bot-7fc0c943-6f4d-4c13-a67c-551b33b4c7b7"
+    },
+    {
+      "type": "conversation_id",
+      "value": "3c91ce26-8a51-4037-9302-e076e5b0af2e"
+    },
+    {
+      "type": "conversation_id",
+      "value": "820622c2-167e-41a0-885a-d70fc3eb03b6"
+    },
+    {
+      "type": "conversation_id",
+      "value": "7858c219-9cf1-450f-a6a3-838612ece056"
+    },
+    {
+      "type": "conversation_id",
+      "value": "bot-c58239a9-3633-4e9f-b1f4-107491eca788"
+    },
+    {
+      "type": "conversation_id",
+      "value": "bot-6b46964f-5427-408f-8bc3-fcb0ce9d6c83"
+    },
+    {
+      "type": "conversation_id",
+      "value": "bot-930e558e-cfae-4b3f-b147-86febc989a6c"
+    },
+    {
+      "type": "url",
+      "value": "https://www.nso.gov.vn"
+    },
+    {
+      "type": "url",
+      "value": "https://www.sbv.gov.vn"
+    },
+    {
+      "type": "url",
+      "value": "https://api.worldbank.org/v2/"
+    },
+    {
+      "type": "url",
+      "value": "https://reports-sandy-six.vercel.app"
+    }
+  ]
+}
