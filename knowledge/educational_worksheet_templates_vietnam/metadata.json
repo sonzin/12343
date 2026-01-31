@@ -1,0 +1,18 @@
+{
+  "title": "HTML-based Educational Worksheets (Vietnam Grade 2)",
+  "summary": "Comprehensive system for creating printable educational worksheets for Grade 2 in Vietnam. Includes a structural framework (A4 page simulation, multi-page printing), a reusable component library (multi-choice, logic chains, solution grids), Twemoji integration, and an AI-enhanced variation workflow. Features advanced strategies for difficulty scaling through composite problems and automated illustration generation using specific visual prompts.",
+  "references": [
+    {
+      "type": "file",
+      "value": "/Users/sonho/Library/CloudStorage/GoogleDrive-quangson.censtaf@gmail.com/Drive của tôi/Learning Đăng/Tuần 19/de_toan_lop2_phep_nhan.html"
+    },
+    {
+      "type": "file",
+      "value": "/Users/sonho/Library/CloudStorage/GoogleDrive-quangson.censtaf@gmail.com/Drive của tôi/Learning Đăng/Tuần 20/28-1/phieu_bai_tap_tuan_20.html"
+    },
+    {
+      "type": "file",
+      "value": "/Users/sonho/Library/CloudStorage/GoogleDrive-quangson.censtaf@gmail.com/Drive của tôi/Learning Đăng/Tuần 20/de_toan_lop2_tuan20_anh_dinh_kem.html"
+    }
+  ]
+}
