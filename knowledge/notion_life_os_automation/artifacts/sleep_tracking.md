@@ -44,3 +44,11 @@ log_sleep(
 - `Deep Sleep Continuity`: Number.
 - `Nút tai 3M`: Checkbox.
 - `White Noise`: Checkbox.
+
+## Analysis and Pattern Insights
+The logging system allows for cross-metric analysis over time.
+
+### Exercise and Deep Sleep Correlation
+Observations from data logged in late January 2026 suggest a link between physical activity and sleep architecture:
+- **Correlation**: Shorter exercise duration on a given day has been observed to correlate with a lower deep sleep ratio that night.
+- **Metric Sensitivity**: "Deep Sleep Continuity" and "Deep Sleep Ratio" are key metrics for identifying recovery quality following different intensities of training.

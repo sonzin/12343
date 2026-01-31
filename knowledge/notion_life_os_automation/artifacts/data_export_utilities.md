@@ -26,7 +26,21 @@ As demonstrated in ad-hoc scripts like `push_and_export.py`, the JSON export pat
 2.  **Aggregation**: Grouping results from multiple databases (e.g., matching a workout with the subsequent night's sleep).
 3.  **UTF-8 Serialization**: Saving with `ensure_ascii=False` to handle Vietnamese characters.
 
-### AI Export Example
+### Dedicated AI Export Script: `export_fitness_json.py`
+To streamline the process, a formal script provides full JSON exports for specific dates:
+
+**Usage:**
+```bash
+python export_fitness_json.py --workout-date YYYY-MM-DD --sleep-date YYYY-MM-DD
+```
+
+**Features:**
+- **Full Schema**: Pulls complete Notion page objects, preserving all metadata for deep AI analysis.
+- **Flexible Filtering**: Allows independent date selection for workout and sleep data (useful for comparing different days).
+- **Automated Directory Handling**: Ensures outputs are saved in the `data/` subdirectory.
+
+### Ad-hoc Aggregate Pattern
+In cases where a custom grouping is needed, the following pattern is used:
 ```python
 # Aggregating data for analysis
 export_data = {

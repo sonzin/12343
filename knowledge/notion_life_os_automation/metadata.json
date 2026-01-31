@@ -1,6 +1,6 @@
 {
     "title": "Notion Life OS: Automation and Tracking System",
-    "summary": "This Knowledge Item documents the Notion Life OS automation system used for tracking fitness, sleep, habits, and productivity. It includes the infrastructure of the project (config, databases), specific tracker implementations (Workout, Sleep, Water, Morning Routines), usage patterns for data correction, and comprehensive data export workflows (CSV for general use and JSON for AI analysis).",
+    "summary": "This Knowledge Item documents the Notion Life OS automation system used for tracking fitness, sleep, habits, and productivity. It includes the infrastructure of the project (config, databases), specific tracker implementations (Workout, Sleep, Water, Morning Routines), usage patterns for data correction, pattern analysis (e.g., exercise-sleep correlations), and comprehensive data export workflows (CSV for general use and JSON for AI analysis).",
     "references": [
         {
             "type": "conversation_id",
@@ -25,6 +25,10 @@
         {
             "type": "file",
             "value": "/Users/sonho/Library/CloudStorage/GoogleDrive-quangson.censtaf@gmail.com/Drive của tôi/Code/Personal Notion/NotionLifeOS/export/export_all.py"
+        },
+        {
+            "type": "file",
+            "value": "/Users/sonho/Library/CloudStorage/GoogleDrive-quangson.censtaf@gmail.com/Drive của tôi/Code/Personal Notion/NotionLifeOS/export_fitness_json.py"
         }
     ]
 }
