@@ -57,3 +57,28 @@ When pushing data with these metrics, the script should be configured to move un
 If a workout is logged on the wrong date, it can be corrected by:
 1.  Querying the database for the entry by name and the (incorrect) date.
 2.  Using the `id` from the result to send a `PATCH` request to the `/v1/pages/{page_id}` endpoint with the corrected date.
+
+## Automated AI Analytics & Readiness
+As of v3.1 of the export system, fitness records are automatically analyzed to produce a **Daily Readiness Score** (0-100).
+
+- **Training Load**: Workouts are weighted by duration and heart rate intensity to calculate a 7-day rolling load.
+- **Readiness Mapping**: The score aggregates HRV status, RHR trends, and training load to provide a "HLV nói 1 câu" (Coach's one-liner) recommendation (e.g., `READY_TO_PUSH` or `RECOVERY_NEEDED`).
+- **Coach-Ready Export**: The processed results are available in `data/fitness_ai_report.json` for external AI coaching.
+
+## Planned Workouts (Dự kiến)
+AI agents can generate and push "Planned" workouts based on the Daily Readiness Score.
+
+### Workflow
+1.  Analyze the **Daily Readiness Score** and **7-day Training Load**.
+2.  Generate a workout recommendation (e.g., Aerobic Zone 2 if readiness is high).
+3.  Push to Notion with **Status**: `Dự kiến`.
+4.  Include detailed targets in the `Notes` (Ghi chú) property, such as:
+    - **Warm-up**: 5-7 mins (HR < 110)
+    - **Main Set**: 25-30 mins (HR 115-125)
+    - **Rationale**: References to readiness score (e.g., 90/100) and HRV trends.
+
+### Recovery Decision Logic
+When the **Training Load** is `OPTIMAL` and the goal is to maximize recovery (parasympathetic activation), AI agents may pivot from indoor cardio to low-impact activities:
+- **Swimming (Bơi lội)**: Preferred for active recovery as it has low joint impact and promotes deep breathing.
+- **Goal**: Maintain circulation without adding mechanical stress to the legs.
+- **Deep Sleep Correlation**: Longer duration, low-intensity sessions (e.g., 40-45 mins) have shown a positive correlation with increased **Deep Sleep** hours in this specific Life OS user's data.

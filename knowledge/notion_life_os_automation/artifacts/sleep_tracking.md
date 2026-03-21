@@ -52,3 +52,13 @@ The logging system allows for cross-metric analysis over time.
 Observations from data logged in late January 2026 suggest a link between physical activity and sleep architecture:
 - **Correlation**: Shorter exercise duration on a given day has been observed to correlate with a lower deep sleep ratio that night.
 - **Metric Sensitivity**: "Deep Sleep Continuity" and "Deep Sleep Ratio" are key metrics for identifying recovery quality following different intensities of training.
+
+## AI Analytics & Data Constraints
+The automated `fitness_ai_report.json` (v3.1) processes sleep logs into qualitative descriptors.
+
+### Sleep Score Factors
+Numerical data is mapped to descriptors like `duration: GOOD` or `deep_sleep: LOW` to help AI "debug" recovery issues.
+
+### Known Constraints ("Blind Spots")
+- **REM Sleep & Bedtime**: Currently `null` in exports because the Huawei Band 10 does not reliably capture REM, and the Notion schema does not yet include a dedicated `bedtime` field.
+- **Biometric Sensitivity**: HRV and RHR are the most reliable indicators for the "Daily Readiness Score", while sleep duration is treated as a secondary constraint.

@@ -1,53 +1,73 @@
 # Data Export Utilities
 
 ## Overview
-The system provides dedicated utilities for exporting Notion database content into portable formats (CSV and JSON). These are primarily located in the `export/` directory.
+The system provides dedicated utilities for exporting Notion database content into portable formats (CSV and JSON). These are primarily located in the project root and `data/` directory.
 
-## CSV Export Scripts
-These scripts use `httpx` to query databases and the built-in `csv` module to save data locally.
+## Primary AI Export Script: `export_fitness_clean.py`
 
-### Available Scripts
-- **`export/export_all.py`**: Executes export for multiple databases (currently Sleep and Workout).
-- **`export/export_sleep.py`**: Specific exporter for the Sleep Health Log.
-- **`export/export_workout.py`**: Specific exporter for the Workout Log.
+**Location:** `/NotionLifeOS/export_fitness_clean.py`
+**Output:** `/NotionLifeOS/data/fitness_ai_report.json`
 
 ### Usage
 ```bash
-python export/export_all.py
+cd NotionLifeOS
+python3 export_fitness_clean.py
 ```
-Outputs are typically saved to the root directory or a designated `data/` folder as `.csv` files (e.g., `sleep_health_data.csv`, `workout_data.csv`).
 
-## JSON Export (AI-Ready)
-For analysis by Large Language Models (LLMs), data is exported in raw JSON format to preserve the full structure of Notion properties.
-
-### Key Pattern
-As demonstrated in ad-hoc scripts like `push_and_export.py`, the JSON export pattern involves:
-1.  **Direct API Query**: Fetching results directly from the Notion database query endpoint.
-2.  **Aggregation**: Grouping results from multiple databases (e.g., matching a workout with the subsequent night's sleep).
-3.  **UTF-8 Serialization**: Saving with `ensure_ascii=False` to handle Vietnamese characters.
-
-### Dedicated AI Export Script: `export_fitness_json.py`
-To streamline the process, a formal script provides full JSON exports for specific dates:
-
-**Usage:**
-```bash
-python export_fitness_json.py --workout-date YYYY-MM-DD --sleep-date YYYY-MM-DD
-```
+### Current Version: v3.1 (2026-01-31)
 
 **Features:**
-- **Full Schema**: Pulls complete Notion page objects, preserving all metadata for deep AI analysis.
-- **Flexible Filtering**: Allows independent date selection for workout and sleep data (useful for comparing different days).
-- **Automated Directory Handling**: Ensures outputs are saved in the `data/` subdirectory.
+1. **Flattened Data**: Converts verbose Notion API response to simple key-value objects
+2. **HR Zones Parsing**: Auto-extracts zone info from notes (aerobic_min, fat_burning_min, etc.)
+3. **Sleep Score Factors**: Adds breakdown (deep_sleep: GOOD/NORMAL/LOW, duration: GOOD/NORMAL/LOW)
+4. **7-Day Trends**: Rolling averages for HRV, RHR, training load, sleep
+5. **30-Day Baseline**: Personal baseline for HRV/RHR with delta percentage
+6. **Daily Readiness Score**: 0-100 score with factors and recommendation
 
-### Ad-hoc Aggregate Pattern
-In cases where a custom grouping is needed, the following pattern is used:
-```python
-# Aggregating data for analysis
-export_data = {
-    "workout": workout_results,
-    "sleep": sleep_results,
-    "context": "Post-workout recovery analysis"
+### Output Structure
+```json
+{
+  "_metadata": { "version": "3.1", "schema_notes": {...} },
+  "_summary": {
+    "total_workout_entries": 18,
+    "total_completed_workouts": 15,
+    "workout_date_range": { "earliest": "...", "latest": "...", "all_dates": [...] },
+    "sleep_date_range": { "earliest": "...", "latest": "...", "all_dates": [...] },
+    "trends_7d": {
+      "daily_readiness": { "score": 90, "status": "READY_TO_PUSH", "recommendation": "..." },
+      "hrv": { "avg_ms": 40.3, "baseline_30d": 39.5, "delta_pct": 2.0, "status": "NORMAL" },
+      "resting_heart_rate": { "avg_bpm": 66.7, "baseline_30d": 66.5, "trend": "STABLE" },
+      "training_load_7d": { "value": 159.3, "status": "OPTIMAL", "recommendation": "..." },
+      "sleep_7d": { "avg_score": 82.4, "avg_deep_sleep_hours": 1.88 }
+    }
+  },
+  "workouts": [...],
+  "sleep_logs": [...]
 }
-with open("analysis_data.json", "w", encoding="utf-8") as f:
-    json.dump(export_data, f, ensure_ascii=False, indent=2)
 ```
+
+### Daily Readiness Scoring Method
+```
+Base 70 + HRV(±15) + RHR_trend(±5) + Sleep(±10) + Load_fatigue(±10)
+```
+- **READY_TO_PUSH** (≥85): High-intensity training OK
+- **READY** (≥70): Normal training OK  
+- **MODERATE** (≥55): Light training recommended
+- **RECOVERY_NEEDED** (<55): Rest day
+
+### Data Limitations
+The following fields may be `null` due to source data constraints:
+- `rem_sleep_hours`: Huawei Band 10 doesn't measure REM
+- `bedtime`: Not captured in Notion database
+- Early entries from Mi Band 4 may have distance inaccuracies
+
+### Legacy Scripts (Deleted)
+- `export_fitness_json.py` - Replaced by export_fitness_clean.py
+- `export_recent_data.py` - Replaced by export_fitness_clean.py
+- Old CSV exports in `data/` folder - No longer needed
+
+## When to Use
+Run `export_fitness_clean.py` when you need to:
+- Feed fitness data to ChatGPT/Gemini/Claude for analysis
+- Check daily readiness before workout
+- Review weekly training trends
